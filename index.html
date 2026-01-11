@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Pintura Suprema | Pintura de Alto Padrão</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-conteudo">
+    <img 
+      src="imagens/logo/logo.png" 
+      alt="Pintura Suprema Pintura de Alto Padrão"
+      class="hero-logo"
+    >
+
+    <span class="hero-tag">Pintura de Alto Padrão</span>
+
+    <h1>Pintura Suprema</h1>
+
+    <p>
+      Acabamento impecável, materiais premium e pintura feita no tempo certo,
+      com precisão e cuidado em cada detalhe.
+    </p>
+
+    <a 
+      class="hero-btn" 
+      href="https://wa.me/5561996710820" 
+      target="_blank"
+    >
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+
+
+<section class="galeria">
+  <div class="galeria-header">
+    <span class="galeria-tag">Portfólio</span>
+    <h2>Detalhes que fazem a diferença</h2>
+    <p>Acabamento fino, precisão nos recortes e resultado impecável em cada ambiente.</p>
+  </div>
+
+  <div class="galeria-container">
+    <button class="nav prev">&#10094;</button>
+
+    <img class="foto lateral" id="foto-esq">
+    <img class="foto principal" id="foto-centro">
+    <img class="foto lateral" id="foto-dir">
+
+    <button class="nav next">&#10095;</button>
+  </div>
+</section>
+
+
+<section class="quem-somos">
+  <span class="galeria-tag">Quem Somos</span>
+  <h2>Pintura feita com precisão e cuidado</h2>
+
+  <p>
+    A Pintura Suprema é especializada em pintura residencial de alto padrão,
+    com foco em acabamento preciso, materiais de primeira linha
+    e execução limpa e organizada.
+  </p>
+
+  <div class="video-box">
+    <video autoplay muted loop playsinline>
+      <source src="videos/quem_somos/video-pintura.mp4  " type="video/mp4">
+    </video>
+  </div>
+</section>
+
+
+<section class="diferenciais">
+  <span class="galeria-tag">Nosso Método</span>
+  <h2>Excelência em cada etapa</h2>
+
+  <div class="cards">
+    <div class="card">
+      <span class="card-num">01</span>
+      <h3>Preparação</h3>
+      <p>Proteção do ambiente, correção de imperfeições e base perfeita para receber a pintura.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-num">02</span>
+      <h3>Execução</h3>
+      <p>Aplicação precisa, tintas premium e técnica refinada para um resultado uniforme.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-num">03</span>
+      <h3>Acabamento</h3>
+      <p>Recortes impecáveis, cantos perfeitos e atenção absoluta aos detalhes.</p>
+    </div>
+
+    <div class="card">
+      <span class="card-num">04</span>
+      <h3>Entrega</h3>
+      <p>Ambiente limpo, organizado e pronto para ser vivido com elegância.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="simulador">
+  <span class="galeria-tag">Orçamento</span>
+  <h2>Faça uma simulação do seu orçamento</h2>
+  <p class="simulador-desc">
+    Tenha uma estimativa inicial de mão de obra e dos materiais necessários
+    para a pintura do seu imóvel.
+  </p>
+
+  <div class="simulador-form">
+    <div class="campo">
+      <label>Tipo de imóvel</label>
+      <select id="tipo">
+        <option value="apartamento">Apartamento</option>
+        <option value="casa">Casa</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Quantidade de quartos</label>
+      <select id="quartos">
+        <option value="1">1 quarto</option>
+        <option value="2">2 quartos</option>
+        <option value="3">3 quartos</option>
+        <option value="4">4 quartos</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Área aproximada (m²)</label>
+      <input type="number" id="metros" max="150" placeholder="Até 150 m²">
+    </div>
+
+    <div class="botoes">
+      <button onclick="simular()">Simular orçamento</button>
+      <button class="secundario" onclick="limpar()">Limpar</button>
+    </div>
+  </div>
+
+  <div id="resultado" class="resultado"></div>
+
+  <small class="aviso">
+    * Valores estimados apenas para referência inicial. Podem variar conforme
+    estado do imóvel, cores escolhidas e necessidades específicas.
+  </small>
+</section>
+
+
+<footer class="contato">
+  <p>Solicite um orçamento</p>
+  <a href="https://wa.me/5561996710820" target="_blank">WhatsApp</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
