@@ -52,13 +52,14 @@ setInterval(() => {
 function simular() {
   const metros = parseInt(document.getElementById("metros").value);
   const quartos = parseInt(document.getElementById("quartos").value);
+  const tipo = document.getElementById("tipo").value; // casa ou apartamento
 
   if (!metros || metros > 150) {
     alert("Informe uma metragem válida até 150 m²");
     return;
   }
 
-  /* 1️⃣ Valor base por metragem */
+  /* 1️⃣ Base por metragem (apartamento / 2 quartos / sem teto) */
   let base;
   if (metros <= 35) base = 800;
   else if (metros <= 50) base = 1200;
@@ -66,55 +67,64 @@ function simular() {
   else if (metros <= 100) base = 2000;
   else base = 2600;
 
-  /* 2️⃣ Ajuste por quantidade de quartos */
+  /* 2️⃣ Ajuste por quartos */
   let fatorQuartos = 1;
   if (quartos === 1) fatorQuartos = 0.9;
   if (quartos === 3) fatorQuartos = 1.1;
   if (quartos >= 4) fatorQuartos = 1.2;
 
-  let maoSemTeto = Math.round(base * fatorQuartos);
-  let maoComTeto = maoSemTeto + 600;
+  let maoSemTeto = base * fatorQuartos;
 
-  const materiais = [
+  /* 3️⃣ Ajuste por tipo de imóvel */
+  if (tipo === "casa") {
+    maoSemTeto *= 1.12; // +12%
+  }
+
+  maoSemTeto = Math.round(maoSemTeto);
+
+  /* 4️⃣ Cálculo do teto (dinâmico) */
+  let valorTeto = Math.round(maoSemTeto * 0.5);
+
+  if (valorTeto < 500) valorTeto = 500;
+  if (valorTeto > 1400) valorTeto = 1400;
+
+  let maoComTeto = maoSemTeto + valorTeto;
+
+  /* Materiais */
+  const materiaisBase = [
     "🎨 Tinta Suvinil Toque de Seda 18 L",
-    "🧱 Fundo preparador Suvinil",
-    "🪵 Selador acrílico (Coralit ou similar)",
-    "🖌️ Rolos Atlas (grandes e pequenos)",
-    "🖌️ Pincéis profissionais",
-    "📏 Fitas para recorte e detalhamento",
+    "🧱 Fundo preparador",
+    "🪵 Selador acrílico",
+    "🖌️ Rolos e pincéis profissionais",
+    "📏 Fitas para recorte",
     "🪚 Lixas para preparação e acabamento"
   ];
 
   const materiaisComTeto = [
     "🎨 Tinta Suvinil Rende & Cobre Muito (teto)",
-    ...materiais
+    ...materiaisBase
   ];
 
   document.getElementById("resultado").innerHTML = `
     <div class="bloco">
       <h3>💰 Mão de obra estimada</h3>
-      <p>
-        <strong>Sem pintura de teto:</strong><br>
-        R$ ${maoSemTeto.toLocaleString("pt-BR")}
-      </p>
-      <p style="margin-top: 10px;">
-        <strong>Com pintura de teto:</strong><br>
-        R$ ${maoComTeto.toLocaleString("pt-BR")}
-      </p>
+      <p><strong>Sem pintura de teto:</strong><br>
+      R$ ${maoSemTeto.toLocaleString("pt-BR")}</p>
+
+      <p style="margin-top:10px;">
+      <strong>Com pintura de teto:</strong><br>
+      R$ ${maoComTeto.toLocaleString("pt-BR")}</p>
     </div>
 
     <div class="bloco">
       <h3>🧰 Materiais previstos (sem teto)</h3>
-      <ul>
-        ${materiais.map(item => `<li>${item}</li>`).join("")}
-      </ul>
+      <ul>${materiaisBase.map(i => `<li>${i}</li>`).join("")}</ul>
     </div>
 
     <div class="bloco">
       <h3>🧰 Materiais previstos (com teto)</h3>
-      <ul>
-        ${materiaisComTeto.map(item => `<li>${item}</li>`).join("")}
-      </ul>
+      <ul>${materiaisComTeto.map(i => `<li>${i}</li>`).join("")}</ul>
     </div>
   `;
 }
+
