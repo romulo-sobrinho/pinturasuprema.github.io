@@ -10,10 +10,17 @@ body {
   color: #222;
 }
 
+/* Sections */
+.section {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 /* Hero */
 .hero {
   position: relative;
   height: 100vh;
+  height: 100svh;
   background: url("imagens/galeria/foto1.jpg") center/cover no-repeat;
   display: flex;
   justify-content: center;
