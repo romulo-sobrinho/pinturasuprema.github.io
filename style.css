@@ -23,7 +23,7 @@ body {
 }
 
 .hero-logo {
-  width: 400px;
+  width: 500px;
   opacity: 0.95;
   animation: fadeUp 1s ease forwards;
   animation-delay: 1s;
@@ -85,7 +85,7 @@ body {
 
 .hero-btn {
   display: inline-block;
-  margin-top: 30px;
+  margin-top: 60px;
   padding: 14px 36px;
   background: #c9a24d;
   color: #000;
@@ -200,6 +200,76 @@ body {
 .nav.next {
   right: 10px;
 }
+
+@media (max-width: 1024px) {
+  .foto {
+    width: 220px;
+    height: 300px;
+  }
+
+  .foto.principal {
+    width: 280px;
+    height: 380px;
+  }
+
+  .galeria-container {
+    gap: 20px;
+  }
+
+  .nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .galeria {
+    padding: 40px 10px;
+  }
+
+  .galeria-container {
+    gap: 0;
+  }
+
+  /* Esconde imagens laterais */
+  #foto-esq,
+  #foto-dir {
+    display: none;
+  }
+
+  /* Central vira destaque total */
+  .foto.principal {
+    width: 90vw;
+    max-width: 380px;
+    height: 55vh;
+  }
+
+  /* Botões sobre a imagem */
+  .nav.prev {
+    left: 15px;
+  }
+
+  .nav.next {
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .foto.principal {
+    height: 45vh;
+  }
+
+  .galeria-header h2 {
+    font-size: 1.9rem;
+  }
+
+  .galeria-header p {
+    font-size: 0.95rem;
+  }
+}
+
 
 /* Quem somos */
 .quem-somos {
@@ -346,6 +416,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
+  color: #fff;
 }
 
 .campo {
